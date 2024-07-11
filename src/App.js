@@ -9,15 +9,27 @@ function App() {
   const [ tasks, setTask ] = useState([]);
 
   function handleFormSubmit(event) {
-    event.preventDefault(); 
+    event.preventDefault();
 
+    let tasksStorage = localStorage.getItem('@task');
+    console.log("taskstorage",tasksStorage)
+    tasksStorage = JSON.parse(tasksStorage)
+    
     const newTask = {
       name: taskName,
       hour: taskHour,
       responsible: taskResponsible,
     };
 
+    tasksStorage.push(newTask)
+
+    console.log(newTask)
+
     setTask([...tasks, newTask]);
+    
+    console.log("tasks",tasks)
+    localStorage.setItem('@task', JSON.stringify(tasksStorage)); 
+    
 
     setTaskName('');
     setTaskHour('');
@@ -32,9 +44,10 @@ function App() {
     }
   }, [])
 
-  useEffect(() => {
-    localStorage.setItem('@task', JSON.stringify(tasks));
-  }, [tasks]);
+  // useEffect(() => {
+  //   console.log("aqui")
+  //   localStorage.setItem('@task', JSON.stringify(tasks));
+  // }, [tasks]);
 
   return (
     <div >
