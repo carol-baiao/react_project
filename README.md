@@ -1,4 +1,7 @@
-# Praticando React
+<div style="display: inline">
+  <img align="center" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg">
+  <h1>Praticando React</h1> 
+</div>
 
 Projeto pessoal desenvolvido com ReactJS para fins de aprendizagem.
 
