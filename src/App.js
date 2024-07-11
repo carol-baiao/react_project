@@ -13,7 +13,12 @@ function App() {
 
     let tasksStorage = localStorage.getItem('@task');
     console.log("taskstorage",tasksStorage)
-    tasksStorage = JSON.parse(tasksStorage)
+
+    if(tasksStorage) {
+      tasksStorage = JSON.parse(tasksStorage)
+    } else {
+      tasksStorage = [];
+    }
     
     const newTask = {
       name: taskName,
@@ -21,6 +26,10 @@ function App() {
       responsible: taskResponsible,
     };
 
+    // if(tasksStorage) {
+    //   console.log("taskstorage", tasksStorage);
+    //   tasksStorage.push(newTask)
+    // }
     tasksStorage.push(newTask)
 
     console.log(newTask)
@@ -78,8 +87,8 @@ function App() {
 
       <div>
         <ul>
-          {tasks.map(tasks => (
-            <li key={tasks}>
+          {tasks.map((tasks, index) => (
+            <li key={index}>
             Task: {tasks.name}
             <br />
             Hour: {tasks.hour}
